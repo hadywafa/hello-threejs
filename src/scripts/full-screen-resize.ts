@@ -1,6 +1,6 @@
 import * as THREE from "three";
-import { box1 } from "./scripts/transform";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { box1 } from "./transform";
 //---------------------------------------------------------------------------
 const canvas = document.querySelector(".webgl") as HTMLCanvasElement;
 const size = {
