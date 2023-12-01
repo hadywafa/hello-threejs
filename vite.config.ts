@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
-import path from "path";
 
+// import path from "path";
 // export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
 //   console.log("command => " + command, ",mode => " + mode);
 //   console.log("isSsrBuild => " + isSsrBuild, ",isPreview => " + isPreview);
