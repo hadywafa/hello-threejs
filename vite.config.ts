@@ -2,11 +2,10 @@ import { defineConfig } from "vite";
 import path from "path";
 
 export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
-  // console.log("command => " + command, ",mode => " + mode);
-  // console.log("isSsrBuild => " + isSsrBuild, ",isPreview => " + isPreview);
-
+  console.log("command => " + command, ",mode => " + mode);
+  console.log("isSsrBuild => " + isSsrBuild, ",isPreview => " + isPreview);
   return {
-    base: "/",
+    base: "/home",
     logLevel: "error",
     server: {
       port: 3200,
