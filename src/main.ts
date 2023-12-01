@@ -17,14 +17,33 @@ const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
 });
 //---------------------------------------------------------------------------
-renderer.setSize(size.width, size.height);
 const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true;
 controls.update();
+//---------------------------------------------------------------------------
+window.addEventListener("resize", () => {
+  //update size
+  size.width = window.innerWidth;
+  size.height = window.innerHeight;
+  //update camera
+  camera.aspect = aspectRatio;
+  camera.updateProjectionMatrix();
+  //update renderer
+  renderer.setSize(size.width, size.height);
+});
+window.addEventListener("dblclick", () => {
+  if (!document.fullscreenElement) {
+    canvas.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+});
 //---------------------------------------------------------------------------
 
 //controls.update() must be called after any manual changes to the camera's transform
 camera.position.set(0, 20, 100);
 scene.add(box1);
+//---------------------------------------------------------------------------
 function animate() {
   requestAnimationFrame(animate);
 
@@ -33,4 +52,7 @@ function animate() {
 
   renderer.render(scene, camera);
 }
+//---------------------------------------------------------------------------
+renderer.setSize(size.width, size.height);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 animate();
