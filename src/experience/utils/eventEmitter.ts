@@ -91,7 +91,7 @@ export default class EventEmitter {
     return this;
   }
 
-  trigger(_name: any, _args: any) {
+  trigger(_name: any, _args?: any) {
     // Errors
     if (typeof _name === "undefined" || _name === "") {
       console.warn("wrong name");

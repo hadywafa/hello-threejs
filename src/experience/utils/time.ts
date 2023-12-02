@@ -4,7 +4,7 @@ export default class Time extends EventEmitter {
   private start: number;
   private current: number;
   private elapsed: number;
-  private delta: number;
+  public delta: number;
 
   constructor() {
     super();

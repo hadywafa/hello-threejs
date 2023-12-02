@@ -5,7 +5,7 @@ import { Source } from "../sources";
 
 export default class Resources extends EventEmitter {
   private sources: Source[] = []; // Adjust the type based on the actual type of your sources property
-  private items: { [key: string]: any } = {};
+  public items: { [key: string]: any } = {};
   private toLoad: number;
   private loaded: number;
   private loaders!: {
@@ -37,15 +37,15 @@ export default class Resources extends EventEmitter {
     // Load each source
     for (const source of this.sources) {
       if (source.type === "gltfModel") {
-        this.loaders.gltfLoader.load(source.path, (file) => {
+        this.loaders.gltfLoader.load(source.path as string, (file) => {
           this.sourceLoaded(source, file);
         });
       } else if (source.type === "texture") {
-        this.loaders.textureLoader.load(source.path, (file) => {
+        this.loaders.textureLoader.load(source.path as string, (file) => {
           this.sourceLoaded(source, file);
         });
       } else if (source.type === "cubeTexture") {
-        this.loaders.cubeTextureLoader.load(source.path, (file) => {
+        this.loaders.cubeTextureLoader.load(source.path as string[], (file) => {
           this.sourceLoaded(source, file);
         });
       }

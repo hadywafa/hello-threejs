@@ -5,7 +5,7 @@ type Path = string | string[];
 export interface Source {
   name: string;
   type: string;
-  path: any;
+  path: Path;
 }
 
 // Define the sources array with the Source type
