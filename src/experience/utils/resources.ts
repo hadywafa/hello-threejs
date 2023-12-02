@@ -1,9 +1,10 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
-import { EventEmitter } from "events"; 
+import EventEmitter from "./eventEmitter"; // Update the import path based on your project structure
+import { Source } from "../sources";
 
 export default class Resources extends EventEmitter {
-  private sources: any[]; // Adjust the type based on the actual type of your sources property
+  private sources: Source[] = []; // Adjust the type based on the actual type of your sources property
   private items: { [key: string]: any } = {};
   private toLoad: number;
   private loaded: number;
@@ -13,11 +14,11 @@ export default class Resources extends EventEmitter {
     cubeTextureLoader: THREE.CubeTextureLoader;
   };
 
-  constructor(sources: any /* Adjust the type based on your sources property */) {
+  constructor(sources: Source[] /* Adjust the type based on your sources property */) {
     super();
 
     this.sources = sources;
-    this.toLoad = this.sources.length;
+    this.toLoad = this.sources?.length;
     this.loaded = 0;
 
     this.setLoaders();
@@ -57,7 +58,7 @@ export default class Resources extends EventEmitter {
     this.loaded++;
 
     if (this.loaded === this.toLoad) {
-      this.emit("ready");
+      this.trigger("ready");
     }
   }
 }
