@@ -10,7 +10,7 @@ const size = {
 const aspectRatio = size.width / size.height;
 //---------------------------------------------------------------------------
 const scene = new THREE.Scene();
-scene.background = new THREE.Color("gray");
+scene.background = new THREE.Color("black");
 const camera = new THREE.PerspectiveCamera(45, aspectRatio, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
